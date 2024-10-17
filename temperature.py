@@ -20,17 +20,10 @@ conversion_type = st.selectbox(
 # Input temperature
 temp_input = st.number_input("Enter the temperature:", step=0.1)
 
-# Convert and display result when the user clicks the button
-if st.button("Convert"):
+# Real-time conversion and display of result
+if conversion_type:
     converted_temp = convert_temperature(temp_input, conversion_type)
     if conversion_type == "Celsius to Fahrenheit":
         st.write(f"{temp_input}°C is equal to {converted_temp:.2f}°F")
     else:
         st.write(f"{temp_input}°F is equal to {converted_temp:.2f}°C")
-
-# Option to continue or exit
-st.write("Do you want to perform another conversion?")
-if st.button("Yes"):
-    st.experimental_rerun()  # Restarts the app for a new conversion
-elif st.button("No"):
-    st.write("Thank you for using the Temperature Converter!")
