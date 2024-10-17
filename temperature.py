@@ -18,12 +18,11 @@ conversion_type = st.selectbox(
 )
 
 # Input temperature
-temp_input = st.number_input("Enter the temperature:", step=0.1)
+temp_input = st.slider("Select the temperature:", min_value=-100.0, max_value=100.0, step=0.1)
 
 # Real-time conversion and display of result
-if conversion_type:
-    converted_temp = convert_temperature(temp_input, conversion_type)
-    if conversion_type == "Celsius to Fahrenheit":
-        st.write(f"{temp_input}°C is equal to {converted_temp:.2f}°F")
-    else:
-        st.write(f"{temp_input}°F is equal to {converted_temp:.2f}°C")
+converted_temp = convert_temperature(temp_input, conversion_type)
+if conversion_type == "Celsius to Fahrenheit":
+    st.write(f"{temp_input}°C is equal to {converted_temp:.2f}°F")
+else:
+    st.write(f"{temp_input}°F is equal to {converted_temp:.2f}°C")
